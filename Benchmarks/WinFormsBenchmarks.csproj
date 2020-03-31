@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Sdk="Microsoft.NET.Sdk.WindowsDesktop" Project="Sdk.props" Condition="'$(TargetFramework)' == 'netcoreapp3.1'"/>
+  <Import Sdk="Microsoft.NET.Sdk.WindowsDesktop" Project="Sdk.props" Condition="'$(TargetFramework)' != 'net472'"/>
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net472;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>netcoreapp3.1;netcoreapp5.0</TargetFrameworks>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
@@ -19,5 +19,5 @@
     <PackageReference Include="BenchmarkDotNet" Version="0.12.0" />
   </ItemGroup>
 
-  <Import Sdk="Microsoft.NET.Sdk.WindowsDesktop" Project="Sdk.targets" Condition="'$(TargetFramework)' == 'netcoreapp3.1'"/>
+  <Import Sdk="Microsoft.NET.Sdk.WindowsDesktop" Project="Sdk.targets" Condition="'$(TargetFramework)' != 'net472'"/>
 </Project>
