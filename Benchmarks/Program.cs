@@ -10,12 +10,12 @@ namespace Benchmarks
         public static void Main(string[] args)
         {
             var config = DefaultConfig.Instance
-                .With(Job.Default.With(CsProjClassicNetToolchain.Net472))
-                .With(Job.Default.With(CsProjCoreToolchain.NetCoreApp31))
+                //.With(Job.Default.With(CsProjClassicNetToolchain.Net472))
+                .With(Job.Default.With(CsProjCoreToolchain.NetCoreApp50))
                 //.With(Job.Default.With(CsProjCoreToolchain.From(new NetCoreAppSettings("netcoreapp5.0", null, ".NET Core 5.0"))))
                 ;
 
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
+            var summary = BenchmarkSwitcher.FromTypes(new[] { typeof(FormControlsBenchmarks) }).RunAll(config: config);
         }
     }
 }
