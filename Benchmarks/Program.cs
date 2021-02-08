@@ -11,7 +11,7 @@ namespace Benchmarks
         public static void Main(string[] args)
         {
             var config = DefaultConfig.Instance
-                //.AddJob(Job.Default.With(CsProjClassicNetToolchain.Net472))
+                .AddJob(Job.Default.WithToolchain(CsProjClassicNetToolchain.Net472))
                 .AddJob(Job.Default.WithToolchain(CsProjCoreToolchain.NetCoreApp31))
                 .AddJob(Job.Default.WithToolchain(CsProjCoreToolchain.From(new NetCoreAppSettings("net5.0-windows", null, ".NET 5.0"))))
                 ;
