@@ -1,22 +1,14 @@
-﻿using BenchmarkDotNet.Configs;
-using BenchmarkDotNet.Jobs;
-using BenchmarkDotNet.Running;
-using BenchmarkDotNet.Toolchains.CsProj;
-using BenchmarkDotNet.Toolchains.DotNetCli;
+﻿using BenchmarkDotNet.Running;
 
 namespace Benchmarks
 {
     public class Program
     {
-        public static void Main(string[] args)
-        {
-            var config = DefaultConfig.Instance
-                //.With(Job.Default.With(CsProjClassicNetToolchain.Net472))
-                .With(Job.Default.With(CsProjCoreToolchain.NetCoreApp31))
-                .With(Job.Default.With(CsProjCoreToolchain.From(new NetCoreAppSettings("netcoreapp5.0", null, ".NET Core 5.0"))))
-                ;
-
-            BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args, config);
-        }
+        /// <summary>
+        /// usage:
+        /// dotnet run -c Release -f $moniker --filter * --runtimes net472 netcoreapp31 net5.0-windows
+        /// </summary>
+        /// <param name="args"></param>
+        public static void Main(string[] args) => BenchmarkSwitcher.FromAssembly(typeof(Program).Assembly).Run(args);
     }
 }
